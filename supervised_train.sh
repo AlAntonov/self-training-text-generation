@@ -21,7 +21,7 @@ mkdir -p ${SAVE}
 fairseq-train wmt14_en_de_bin \
      -a ${model} --optimizer adam --lr 0.0005 -s ${src} -t ${tgt} \
      --dropout ${dropout} --max-tokens 4096 \
-     --min-lr '1e-09' --lr-scheduler inverse_sqrt --weight-decay 0.0001 \
+     --stop-min-lr '1e-09' --lr-scheduler inverse_sqrt --weight-decay 0.0001 \
      --criterion label_smoothed_cross_entropy --label-smoothing 0.1 --max-update ${train_steps} \
      --warmup-updates 4000 --warmup-init-lr '1e-07' \
      --adam-betas '(0.9, 0.98)' --save-dir ${SAVE} \
